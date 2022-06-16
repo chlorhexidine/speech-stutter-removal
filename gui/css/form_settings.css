@@ -1,0 +1,55 @@
+QWidget {
+  font-family: Arial;
+  font-size: 16pt;
+  font-weight: 400;
+  padding: 10px;
+  background-color: white;
+  margin: 5px;
+}
+
+QPushButton {
+  background: transparent;
+  border: 3px solid lightgray;
+  border-radius: 5px;
+  font-size: 14pt;
+  cursor: pointer;
+}
+
+QPushButton:hover {
+  background-color: lightgray;
+}
+
+QPushButton:pressed {
+  background-color: gray;
+  border-color: gray;
+}
+
+QLineEdit {
+  border: 3px solid lightgray;
+  border-radius: 5px;
+}
+
+QComboBox {
+  border: 3px solid lightgray;
+  border-radius: 5px;
+  min-width: 2em;
+}
+
+QComboBox:editable {
+  background: white;
+}
+
+QComboBox:!editable:on,
+QComboBox::drop-down:editable:on {
+  background-color: gray;
+  border-color: gray;
+}
+
+QComboBox:on {
+  padding-top: 3px;
+  padding-left: 4px;
+}
+
+QComboBox::drop-down {
+  border: 0;
+}

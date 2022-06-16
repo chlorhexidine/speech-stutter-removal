@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/volume_down_black.svg</file>
+    <file>icons/volume_off_black.svg</file>
+    <file>icons/volume_up_black.svg</file>
+    <file>icons/settings_black.svg</file>
+    <file>icons/record_voice_over_black.svg</file>
+    <file>icons/folder_black.svg</file>
+    <file>icons/mic_black.svg</file>
+    <file>icons/pause_black.svg</file>
+    <file>icons/play_arrow_black.svg</file>
+    <file>icons/stop_black.svg</file>
+  </qresource>
+</RCC>

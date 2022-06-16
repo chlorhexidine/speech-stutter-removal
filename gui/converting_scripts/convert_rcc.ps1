@@ -1,0 +1,1 @@
+pyside6-rcc.exe gui/resources.qrc -o gui/resources_rc.py

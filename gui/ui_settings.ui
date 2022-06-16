@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>form_settings</class>
+ <widget class="QWidget" name="form_settings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>981</width>
+    <height>346</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Настройки</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/icons/settings_black.svg</normaloff>:/icons/icons/settings_black.svg</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+  font-family: Arial;
+  font-size: 16pt;
+  font-weight: 400;
+  padding: 10px;
+  background-color: white;
+  margin: 5px;
+}
+
+QPushButton {
+  background: transparent;
+  border: 3px solid lightgray;
+  border-radius: 5px;
+  font-size: 14pt;
+  cursor: pointer;
+}
+
+QPushButton:hover {
+  background-color: lightgray;
+}
+
+QPushButton:pressed {
+  background-color: gray;
+  border-color: gray;
+}
+
+QLineEdit {
+  border: 3px solid lightgray;
+  border-radius: 5px;
+}
+
+QComboBox {
+  border: 3px solid lightgray;
+  border-radius: 5px;
+  min-width: 2em;
+}
+
+QComboBox:editable {
+  background: white;
+}
+
+QComboBox:!editable:on,
+QComboBox::drop-down:editable:on {
+  background-color: gray;
+  border-color: gray;
+}
+
+QComboBox:on {
+  padding-top: 3px;
+  padding-left: 4px;
+}
+
+QComboBox::drop-down {
+  border: 0;
+}
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QGridLayout" name="layout_settings">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMinimumSize</enum>
+     </property>
+     <item row="4" column="0">
+      <widget class="QPushButton" name="btn_record_folder">
+       <property name="text">
+        <string>Выбрать папку</string>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/icons/icons/folder_black.svg</normaloff>:/icons/icons/folder_black.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="shortcut">
+        <string>Ctrl+O</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="le_record_folder">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" colspan="2">
+      <widget class="QLabel" name="lbl_audio_devices">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Звуковые устройства</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="lbl_output">
+       <property name="text">
+        <string>Запись</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="box_output"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="lbl_input">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Воспроизведение</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="box_input"/>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QLabel" name="lbl_save_recording">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Сохранение записи голоса</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

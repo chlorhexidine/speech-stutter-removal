@@ -1,0 +1,93 @@
+QWidget {
+  font-family: Arial;
+  font-size: 16pt;
+  font-weight: 400;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+QLabel#lbl_duration_after,
+#lbl_duration_before,
+#lbl_current_time_before,
+#lbl_current_time_after {
+  font-size: 12pt;
+  margin: 0;
+}
+
+QPushButton {
+  background: transparent;
+  border: 3px solid lightgray;
+  border-radius: 5px;
+  font-size: 14pt;
+}
+
+QPushButton#btn_play_pause_before,
+#btn_play_pause_after,
+#btn_volume {
+  padding: 5px;
+  margin-right: 0;
+}
+
+QPushButton:hover {
+  background-color: lightgray;
+}
+
+QPushButton:pressed {
+  background-color: gray;
+  border-color: gray;
+}
+
+QSlider::groove:horizontal {
+  border: 1px solid gray;
+  background: white;
+  height: 15px;
+  border-radius: 8px;
+}
+
+QSlider::sub-page:horizontal {
+  background: qlineargradient(
+    x1: 0,
+    y1: 0,
+    x2: 0,
+    y2: 1,
+    stop: 0 lightgray,
+    stop: 1 gray
+  );
+  height: 10px;
+  border-radius: 5px;
+}
+
+QSlider::add-page:horizontal {
+  background: white;
+  border: 3px solid lightgray;
+  height: 10px;
+  border-radius: 5px;
+}
+
+QSlider::handle:horizontal {
+  background: qlineargradient(
+    x1: 0,
+    y1: 0,
+    x2: 1,
+    y2: 1,
+    stop: 0 #eee,
+    stop: 1 #ccc
+  );
+  width: 20px;
+  margin-top: -3px;
+  margin-bottom: -3px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+QSlider::handle:horizontal:hover {
+  background: qlineargradient(
+    x1: 0,
+    y1: 0,
+    x2: 1,
+    y2: 1,
+    stop: 0 #fff,
+    stop: 1 #ddd
+  );
+}

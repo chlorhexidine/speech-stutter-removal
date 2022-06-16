@@ -1,0 +1,22 @@
+QComboBox {
+  border: 3px solid lightgray;
+  border-radius: 3px;
+  width: 40px;
+  padding: 1px 15px 1px 3px;
+  margin-left: 0;
+}
+
+QComboBox:!editable:on,
+QComboBox::drop-down:editable:on {
+  background-color: gray;
+  border-color: gray;
+}
+
+QComboBox:on {
+  padding-top: 3px;
+  padding-left: 4px;
+}
+
+QComboBox::drop-down {
+  border: 0px;
+}

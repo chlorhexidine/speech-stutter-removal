@@ -1,0 +1,9 @@
+QPushButton:checked {
+  background-color: #ff735e;
+  border-color: #ff735e;
+}
+
+QPushButton:checked:hover {
+  background-color: #e33e33;
+  border-color: #e33e33;
+}

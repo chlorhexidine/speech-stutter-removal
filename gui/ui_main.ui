@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>770</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>770</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Коррекция заикания</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/icons/record_voice_over_black.svg</normaloff>:/icons/icons/record_voice_over_black.svg</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+  font-family: Arial;
+  font-size: 16pt;
+  font-weight: 400;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+QLabel#lbl_duration_after,
+#lbl_duration_before,
+#lbl_current_time_before,
+#lbl_current_time_after {
+  font-size: 12pt;
+  margin: 0;
+}
+
+QPushButton {
+  background: transparent;
+  border: 3px solid lightgray;
+  border-radius: 5px;
+  font-size: 14pt;
+}
+
+QPushButton#btn_play_pause_before,
+#btn_play_pause_after,
+#btn_volume {
+  padding: 5px;
+  margin-right: 0;
+}
+
+QPushButton:hover {
+  background-color: lightgray;
+}
+
+QPushButton:pressed {
+  background-color: gray;
+  border-color: gray;
+}
+
+QSlider::groove:horizontal {
+  border: 1px solid gray;
+  background: white;
+  height: 15px;
+  border-radius: 8px;
+}
+
+QSlider::sub-page:horizontal {
+  background: qlineargradient(
+    x1: 0,
+    y1: 0,
+    x2: 0,
+    y2: 1,
+    stop: 0 lightgray,
+    stop: 1 gray
+  );
+  height: 10px;
+  border-radius: 5px;
+}
+
+QSlider::add-page:horizontal {
+  background: white;
+  border: 3px solid lightgray;
+  height: 10px;
+  border-radius: 5px;
+}
+
+QSlider::handle:horizontal {
+  background: qlineargradient(
+    x1: 0,
+    y1: 0,
+    x2: 1,
+    y2: 1,
+    stop: 0 #eee,
+    stop: 1 #ccc
+  );
+  width: 20px;
+  margin-top: -3px;
+  margin-bottom: -3px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+QSlider::handle:horizontal:hover {
+  background: qlineargradient(
+    x1: 0,
+    y1: 0,
+    x2: 1,
+    y2: 1,
+    stop: 0 #fff,
+    stop: 1 #ddd
+  );
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="lbl_title">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Программа для коррекции заикания</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="layout_file">
+      <item>
+       <widget class="QPushButton" name="btn_choose_file">
+        <property name="text">
+         <string>Выбрать файл</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/icons/folder_black.svg</normaloff>:/icons/icons/folder_black.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="shortcut">
+         <string>Ctrl+O</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="le_filepath">
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+  border: 3px solid lightgray;
+  border-radius: 5px;
+  font-size: 14pt;
+  margin-left: 0;
+}
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>D:\downloads\запись моего голоса.wav</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="layout_record">
+      <item>
+       <widget class="QPushButton" name="btn_record_stop">
+        <property name="styleSheet">
+         <string notr="true">QPushButton:checked {
+	background-color: #ff735e;
+	border-color: #ff735e;
+}
+
+QPushButton:checked:hover {
+	background-color: #e33e33;
+	border-color: #e33e33;
+}</string>
+        </property>
+        <property name="text">
+         <string>Записать голос</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/icons/mic_black.svg</normaloff>
+          <normalon>:/icons/icons/stop_black.svg</normalon>:/icons/icons/mic_black.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_settings">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">margin-left: 0;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/icons/settings_black.svg</normaloff>:/icons/icons/settings_black.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="layout_before">
+      <item row="1" column="2">
+       <widget class="QSlider" name="slider_duration_before">
+        <property name="minimumSize">
+         <size>
+          <width>560</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>16</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="tickPosition">
+         <enum>QSlider::TicksBelow</enum>
+        </property>
+        <property name="tickInterval">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="btn_play_pause_before">
+        <property name="sizeIncrement">
+         <size>
+          <width>0</width>
+          <height>1</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>14</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/icons/play_arrow_black.svg</normaloff>
+          <normalon>:/icons/icons/pause_black.svg</normalon>:/icons/icons/play_arrow_black.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="lbl_current_time_before">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>0:00</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="lbl_duration_before">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>0:00</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="4">
+       <widget class="QLabel" name="lbl_before">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Запись до коррекции</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="layout_after">
+      <item row="1" column="0">
+       <widget class="QPushButton" name="btn_play_pause_after">
+        <property name="sizeIncrement">
+         <size>
+          <width>0</width>
+          <height>1</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>14</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/icons/play_arrow_black.svg</normaloff>
+          <normalon>:/icons/icons/pause_black.svg</normalon>:/icons/icons/play_arrow_black.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="lbl_current_time_after">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>0:00</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QSlider" name="slider_duration_after">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="tickPosition">
+         <enum>QSlider::TicksBelow</enum>
+        </property>
+        <property name="tickInterval">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="lbl_duration_after">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>0:00</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="4">
+       <widget class="QLabel" name="lbl_after">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Запись после коррекции</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="layout_playback_settings">
+      <item>
+       <widget class="QPushButton" name="btn_volume">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/icons/icons/volume_up_black.svg</normaloff>
+          <normalon>:/icons/icons/volume_off_black.svg</normalon>:/icons/icons/volume_up_black.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbl_volume">
+        <property name="styleSheet">
+         <string notr="true">margin: 0;</string>
+        </property>
+        <property name="text">
+         <string>50</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="slider_volume">
+        <property name="styleSheet">
+         <string notr="true">QSlider::sub-page:horizontal {
+  background: qlineargradient(
+    x1: 0,
+    y1: 0,
+    x2: 0,
+    y2: 1,
+    stop: 0 lightgray,
+    stop: 1 #668925
+  );
+}</string>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="pageStep">
+         <number>10</number>
+        </property>
+        <property name="sliderPosition">
+         <number>50</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbl_playback_rate">
+        <property name="styleSheet">
+         <string notr="true">margin: 0;</string>
+        </property>
+        <property name="text">
+         <string>Скорость воспроизведения</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="box_playback_rate">
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+  border: 3px solid lightgray;
+  border-radius: 3px;
+  width: 40px;
+  padding: 1px 15px 1px 3px;
+  margin-left: 0;
+}
+
+QComboBox:!editable:on,
+QComboBox::drop-down:editable:on {
+  background-color: gray;
+  border-color: gray;
+}
+
+QComboBox:on {
+  padding-top: 3px;
+  padding-left: 4px;
+}
+
+QComboBox::drop-down {
+  border: 0px;
+}
+</string>
+        </property>
+        <property name="currentText">
+         <string>1.0</string>
+        </property>
+        <property name="currentIndex">
+         <number>3</number>
+        </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QComboBox::AdjustToContents</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>0.25</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>0.5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>0.75</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1.0</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1.25</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1.5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1.75</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2.0</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
